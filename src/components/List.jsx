@@ -24,7 +24,7 @@ function List({ toDos, setToDos }) {
 
     return (
         <Listcontainer>
-            <h2 className='list-title'>Working..🔥</h2>
+            <h2>Working..🔥</h2>
             <ListWrapper>
                 {toDos.map((toDo) => {
                     if (toDo.isDone === false) {
@@ -40,7 +40,7 @@ function List({ toDos, setToDos }) {
                     }
                 })}
             </ListWrapper>
-            <h2 className='list-title'>Done..!👍🏻</h2>
+            <h2>Done..!👍🏻</h2>
             <ListWrapper>
                 {toDos.map((toDo) => {
                     if (toDo.isDone === true) {

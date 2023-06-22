@@ -1,8 +1,7 @@
 import React from 'react';
-import Main from './pages/Main';
-
+import Router from './shared/Router';
 function App() {
-  return <Main />;
+  return <Router />;
 }
 
 export default App;

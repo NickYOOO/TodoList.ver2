@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { useNavigate } from "react-router-dom";
 function ToDo({ toDo, deleteHandler, completeHandler }) {
+    const navigate = useNavigate();
     return (
         <TodoContainer>
             <div>
+                <StDetailBtn onClick={() => navigate(`/detail/${toDo.id}`)}>
+                    + 상세내용
+                </StDetailBtn>
                 <h2>{toDo.title}</h2>
                 <div>{toDo.body}</div>
             </div>
@@ -51,4 +55,23 @@ const DeleteButton = styled(Button)`
 const CompleteButton = styled(Button)`
   border: 2px solid green;
   background-color: #fff;
+`;
+
+const StDetailBtn = styled.button`
+  float: right; // 오른쪽 상단으로 버튼을
+
+  box-sizing: border-box;
+
+  border-radius: 20px;
+  border: none;
+  background-color: #f2ededa2;
+
+  padding: 5px 10px;
+  width: 90px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: #2b292964;;
+  }
 `;
