@@ -1,30 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Layout from '../components/Layout';
 import Header from '../components/Header';
 import Form from '../components/Form';
 import List from '../components/List';
 
 function Main() {
-    const getData = () => {
-        return JSON.parse(localStorage.getItem('Main'))
-    }
+    // const getData = () => {
+    //     return JSON.parse(localStorage.getItem('Main'))
+    // }
 
-    const [toDos, setToDos] = useState(getData())
+    // const [toDos, setToDos] = useState(getData())
+    // const state = useSelector((state) => {
+    //     return state;
+    // })
 
-    useEffect(() => {
-        window.localStorage.setItem('Main', JSON.stringify(toDos))
-    }, [toDos]);
+    // useEffect(() => {
+    //     window.localStorage.setItem('Main', JSON.stringify(toDos))
+    // }, [toDos]);
 
-    if (toDos == null) {
-        setToDos([]);
-    }
+    // if (toDos == null) {
+    //     setToDos([]);
+    // }
 
 
     return (
         <Layout>
             <Header />
-            <Form toDos={toDos} setToDos={setToDos} />
-            <List toDos={toDos} setToDos={setToDos} />
+            <Form />
+            <List />
         </Layout>
     );
 };
