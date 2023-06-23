@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from "styled-components";
 
 import { useSelector } from "react-redux"; //useSelector 훅 임포트, state값을 조회한다
@@ -11,8 +11,11 @@ function List() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const todoStore = useSelector((state) => state.todos); //store 연결확인
+    const todoStore = useSelector((state) => state.todos.dataTodos); //store 연결확인
 
+    useEffect(() => {
+        window.localStorage.setItem('Main', JSON.stringify(todoStore))
+    }, [todoStore]);
     // dispatch로 명령 전달
     const deleteHandler = (selectedId) => {
         dispatch(deleteTodo(selectedId));
@@ -29,7 +32,7 @@ function List() {
                 {todoStore.map((toDo) => {
                     if (toDo.isDone === false) {
                         return (
-                            <TodoContainer>
+                            <TodoContainer key={toDo.id}>
                                 <div>
                                     <StDetailBtn onClick={() => navigate(`/detail/${toDo.id}`)}>
                                         + 상세내용
@@ -57,7 +60,7 @@ function List() {
                 {todoStore.map((toDo) => {
                     if (toDo.isDone === true) {
                         return (
-                            <TodoContainer>
+                            <TodoContainer key={toDo.id}>
                                 <div>
                                     <StDetailBtn onClick={() => navigate(`/detail/${toDo.id}`)}>
                                         + 상세내용

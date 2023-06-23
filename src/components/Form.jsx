@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addTodo } from "../redux/modules/todos";
 
 function Form() {
@@ -10,11 +10,9 @@ function Form() {
   // input을 통해 들어오는 값을 받는 state
   const initialState = { id: 0, title: "", body: "", isDone: false }
   const [inputToDo, setInputToDo] = useState(initialState)
-
+  const todoStore = useSelector((state) => state.todos.dataTodos); //store 연결확인
   // id값 주기
   const nextId = useRef(3);
-
-
 
   const onChangeHandler = (e) => {
     const { value, name } = e.target
@@ -25,7 +23,7 @@ function Form() {
     e.preventDefault();
     nextId.current++; //submit 버튼을 누를 때 아이디 값을 하나씩 증가시킴
     //dispatch에 액션을 담아서 리듀서로 보낸다. 여기서 보낸 값이 액션객체의 payload에 들어감
-    dispatch(addTodo({ ...inputToDo }));
+    dispatch(addTodo([...todoStore, inputToDo]));
     setInputToDo(initialState) //이벤트가 끝나고 초기화-> input창을 빈칸으로 만들어 주는 역할
   }
 

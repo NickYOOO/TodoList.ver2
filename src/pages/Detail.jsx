@@ -8,7 +8,7 @@ const Detail = () => {
   const param = useParams();
   const navigate = useNavigate();
 
-  const todoStore = useSelector((state) => state.todos)
+  const todoStore = useSelector((state) => state.todos.dataTodos)
 
   return (
     <StContainer>
