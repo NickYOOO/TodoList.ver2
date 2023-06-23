@@ -36,6 +36,7 @@ function Form() {
           name="title"
           value={inputToDo.title}
           onChange={onChangeHandler}
+          required
         ></StInput>
         <StLabel>내용</StLabel>
         <StInput
@@ -43,6 +44,7 @@ function Form() {
           name="body"
           value={inputToDo.body}
           onChange={onChangeHandler}
+          required
         ></StInput>
       </StInputGroup>
       <StButton>추가하기</StButton>
